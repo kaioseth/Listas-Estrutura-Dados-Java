@@ -142,7 +142,38 @@ public class Main {
                     case 3: // LSEC
                         if( !lseci ){ lseci = true; lsec = new LSEC(); }
 
-                        
+                        while( opcaoSecundaria != 0 ){
+                            imprimirMenuSecundario();  
+                            opcaoSecundaria = entrada.nextInt();
+                            if( opcaoSecundaria == 2 ){ // Buscar valor em LSEC
+                                System.out.println("Digite o valor que deseja buscar:");
+                                valor = entrada.nextInt();
+                                NoLista no = lsec.buscarValor(valor);
+                                if( no != null ){
+                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                }else{
+                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                }
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LSEC
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                lsec.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LSEC
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                lsec.inserirFim(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LSEC
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                lsec.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 6 ){ // Remover valor de LSEC
+                                System.out.println("Digite o valor que deseja remover:");
+                                valor = entrada.nextInt();
+                                lsec.remover(valor);
+                            }else if( opcaoSecundaria == 7 ){ // Imprimir LSEC
+                                lsec.imprimirEstrutura();
+                            }
+                        } // fim while opção secundária
                     break;
 
                     case 4: // LDEC

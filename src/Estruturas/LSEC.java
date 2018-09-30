@@ -112,8 +112,17 @@ public class LSEC extends NoLista{
                 aux = aux.getProximo();
             }
 
-            if(  ){
-                
+            if( aux.getProximo().getChave() == x ){
+                no = aux.getProximo();
+                if( no.getProximo() == no ){
+                    this.inicializaLista();
+                }else{
+                    aux.setProximo(no.getProximo());
+                    no.setProximo(null);
+                    if( this.getUltimo() == no ){
+                        this.setUltimo(aux);
+                    }
+                }
             }
         }
     }
