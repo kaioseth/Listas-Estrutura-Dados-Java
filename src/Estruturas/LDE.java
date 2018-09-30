@@ -107,7 +107,7 @@ public class LDE extends NoLista{
         }
     }
 
-    public int remover(int x){
+    public void remover(int x){
         NoLista no = this.buscarValor(x);
 
         if( no == null ){
@@ -120,11 +120,18 @@ public class LDE extends NoLista{
                     this.setPrimeiro(no.getProximo());
                     this.getPrimeiro().setAnterior(null);
                     no.setProximo(null);
+                }else if( no == this.getUltimo() ){
+                    this.setUltimo(no.getAnterior());
+                    this.getUltimo().setProximo(null);
+                    no.setAnterior(null);
+                }else{
+                    no.getAnterior().setProximo(no.getProximo());
+                    no.getProximo().setAnterior(no.getAnterior());
+                    no.setAnterior(null);
+                    no.setProximo(null);
                 }
             }            
         }
-
-        return -1;
     }
 
     public void imprimirEstrutura(){
@@ -135,9 +142,10 @@ public class LDE extends NoLista{
             while( aux.getProximo() != null ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
                 aux = aux.getProximo();
+                contador++;
             }
         }else{
-            System.out.println("Lista vazia, impossível imprimir dados!");
+            System.out.println("Estrutura vazia, impossível imprimir dados!");
         }
     }
 

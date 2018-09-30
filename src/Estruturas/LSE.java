@@ -99,7 +99,7 @@ public class LSE extends NoLista{
     }
 
     // aqui
-    public int remover(int x){
+    public void remover(int x){
         if( !this.listaVazia() ){
             if( this.getPrimeiro().getChave() == x ){ // verifico se o elemento é o primeiro da lista
                 this.setPrimeiro(this.getPrimeiro().getProximo());
@@ -125,8 +125,6 @@ public class LSE extends NoLista{
                 }
             }
         }
-
-        return -1;
     }
 
     public void imprimirEstrutura(){
@@ -137,9 +135,10 @@ public class LSE extends NoLista{
             while( aux.getProximo() != null ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
                 aux = aux.getProximo();
+                contador++;
             }
         }else{
-            System.out.println("Lista vazia, impossível imprimir dados!");
+            System.out.println("Estrutura vazia, impossível imprimir dados!");
         }
     }
 
