@@ -122,7 +122,7 @@ public class LDEC {
         }
     }
 
-    public void remover(int x){
+    /*public void remover(int x){
         NoLista no = this.buscarValor(x);
 
         if( no == null ){
@@ -147,7 +147,7 @@ public class LDEC {
                 }
             }            
         }
-    }
+    }*/
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
