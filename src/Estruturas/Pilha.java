@@ -61,7 +61,7 @@ public class Pilha {
         this.setTamanho(tamanho);
     }
 
-    public void Empilha(int x) {
+    public void empilhar(int x) {
         Elemento aux = this.getTopo();
         this.setTopo(new Elemento());
         this.getTopo().setValor(x);
@@ -69,7 +69,7 @@ public class Pilha {
         this.setTamanho(this.getTamanho()+1);
     }
 
-    public Elemento Desempilha(){
+    public Elemento desempilhar(){
         if( this.pilhaVazia() ){
             System.out.println("Não existem elementos na pilha para serem removidos!");
             return null;

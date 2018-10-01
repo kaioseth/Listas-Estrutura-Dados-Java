@@ -67,9 +67,10 @@ public class Main {
                 switch( opcaoPrincipal ) {
                     case 1: // LSE
                         if( !lsei ) { lsei = true; lse = new LSE(); }
+                        opcaoSecundaria = 1;
 
                         while( opcaoSecundaria != 0 ){
-                            imprimirMenuSecundario();  
+                            imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LSE
                                 System.out.println("Digite o valor que deseja buscar:");
@@ -104,9 +105,10 @@ public class Main {
 
                     case 2: // LDE
                         if( !ldei ) { ldei = true; lde = new LDE(); }
+                        opcaoSecundaria = 1;
 
                         while( opcaoSecundaria != 0 ){
-                            imprimirMenuSecundario();  
+                            imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LDE
                                 System.out.println("Digite o valor que deseja buscar:");
@@ -141,9 +143,10 @@ public class Main {
 
                     case 3: // LSEC
                         if( !lseci ){ lseci = true; lsec = new LSEC(); }
+                        opcaoSecundaria = 1;
 
                         while( opcaoSecundaria != 0 ){
-                            imprimirMenuSecundario();  
+                            imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LSEC
                                 System.out.println("Digite o valor que deseja buscar:");
@@ -178,8 +181,40 @@ public class Main {
 
                     case 4: // LDEC
                         if( !ldeci ){ ldeci = true; ldec = new LDEC(); }
+                        opcaoSecundaria = 1;
 
-                        
+                        while( opcaoSecundaria != 0 ){
+                            imprimirSubMenuLista();  
+                            opcaoSecundaria = entrada.nextInt();
+                            if( opcaoSecundaria == 2 ){ // Buscar valor em LDEC
+                                System.out.println("Digite o valor que deseja buscar:");
+                                valor = entrada.nextInt();
+                                NoLista no = ldec.buscarValor(valor);
+                                if( no != null ){
+                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                }else{
+                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                }
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LDEC
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                ldec.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LDEC
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                ldec.inserirFim(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LDEC
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                ldec.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 6 ){ // Remover valor de LDEC
+                                System.out.println("Digite o valor que deseja remover:");
+                                valor = entrada.nextInt();
+                                //ldec.remover(valor);
+                            }else if( opcaoSecundaria == 7 ){ // Imprimir LDEC
+                                ldec.imprimirEstrutura();
+                            }
+                        } // fim while opção secundária
                     break;
 
                     case 5: // Fila  
@@ -190,9 +225,25 @@ public class Main {
 
                     case 6: // Pilha
                         if( !pilhai ){ pilhai = true; pilha = new Pilha(); }
-
-                        
-                    break;
+                        opcaoSecundaria = 1;
+                        while( opcaoSecundaria != 0 ){
+                            imprimirSubMenuPilha();  
+                            opcaoSecundaria = entrada.nextInt();
+                            if( opcaoSecundaria == 2 ){ // Empilhar
+                                System.out.println("Digite o valor que deseja buscar:");
+                                valor = entrada.nextInt();
+                                pilha.empilhar(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Desempilhar
+                                pilha.desempilhar();
+                            }else if( opcaoSecundaria == 4 ){ // Tamanho da pilha
+                                pilha.tamanhoPilha();
+                            }else if( opcaoSecundaria == 5 ){ // Imprimir elementos da pilha
+                                pilha.imprimirPilha();
+                            }else if( opcaoSecundaria == 6 ){ // Ver elemento do topo
+                                pilha.buscarTopo();
+                            }
+                        } // fim while submenu pilha
+                    break; // parada condição 6
 
                     default:
                         System.out.println("Opção inválida!");
@@ -220,7 +271,7 @@ public class Main {
         System.out.println("\n");
     }
 
-    public static void imprimirMenuSecundario(){
+    public static void imprimirSubMenuLista(){
         System.out.println("\n");
         System.out.println("# Menu Secundário---------------------- #");
         System.out.println(" O que deseja fazer com a estrutura: ");
@@ -231,6 +282,36 @@ public class Main {
         System.out.println(" 5 - Inserir ordenadamente ");
         System.out.println(" 6 - Remover ");
         System.out.println(" 7 - Imprimir estrutura ");
+        System.out.println(" 0 - Voltar para menu principal ");
+        System.out.println("# ------------------------------------- #");
+        System.out.println("\n");
+    }
+
+    public static void imprimirSubMenuFila(){
+        System.out.println("\n");
+        System.out.println("# Menu Secundário---------------------- #");
+        System.out.println(" O que deseja fazer com a estrutura: ");
+        //System.out.println(" 1 - Inicializar estrutura ");
+        System.out.println(" 2 - Empilhar elemento ");
+        System.out.println(" 3 - Desempilhar elemento ");
+        System.out.println(" 4 - Tamanho atual da pilha ");
+        System.out.println(" 5 - Imprimir elementos ");
+        System.out.println(" 6 - Ver elemento do topo ");
+        System.out.println(" 0 - Voltar para menu principal ");
+        System.out.println("# ------------------------------------- #");
+        System.out.println("\n");
+    }
+
+    public static void imprimirSubMenuPilha(){
+        System.out.println("\n");
+        System.out.println("# Menu Secundário---------------------- #");
+        System.out.println(" O que deseja fazer com a estrutura: ");
+        //System.out.println(" 1 - Inicializar estrutura ");
+        System.out.println(" 2 - Empilhar elemento ");
+        System.out.println(" 3 - Desempilhar elemento ");
+        System.out.println(" 4 - Tamanho atual da pilha ");
+        System.out.println(" 5 - Imprimir elementos ");
+        System.out.println(" 6 - Ver elemento do topo ");
         System.out.println(" 0 - Voltar para menu principal ");
         System.out.println("# ------------------------------------- #");
         System.out.println("\n");
