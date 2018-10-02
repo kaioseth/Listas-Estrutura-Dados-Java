@@ -13,6 +13,25 @@ package Estruturas;
 
 public class FilaS {
     public class NoFila{
-        
+        int valor;
+        NoFila proximo;
+
+        public int getValor() {
+            return valor;
+        }
+
+        public void setValor(int valor) {
+            this.valor = valor;
+        }
+
+        public NoFila getProximo() {
+            return proximo;
+        }
+
+        public void setProximo(NoFila proximo) {
+            this.proximo = proximo;
+        }
     }
+    
+    
 }
