@@ -11,6 +11,85 @@ package Estruturas;
  * @author kaio_
  */
 
-public class FilaC {
+public class FilaC extends NoFila{
+    NoFila ini;
+    NoFila fim;
+
+    public NoFila getIni() {
+        return ini;
+    }
+
+    public void setIni(NoFila ini) {
+        this.ini = ini;
+    }
+
+    public NoFila getFim() {
+        return fim;
+    }
+
+    public void setFim(NoFila fim) {
+        this.fim = fim;
+    }
     
+    public void inicializaFilaC(){
+        this.setIni(null);
+        this.setFim(null);
+    }
+    
+    public boolean filaCVazia(){
+        if( this.getIni() == this.getFim() && this.getFim() == null ){
+            return true;
+        }
+        return false;
+    }
+    
+    public void imprimirFilaC(){
+        NoFila aux = this.getFim().getProximo();
+        int contador = 0;
+        while( aux.getProximo() != this.getFim() ){
+            System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
+            contador++;
+            aux = aux.getProximo();
+        }
+        if( this.getFim() != null ){
+            System.out.println("Elemento da posição "+contador+" possui o valor: "+this.getFim().getValor());
+            contador++;
+        }
+    }
+    
+    public void enfileirar(int x){
+        NoFila aux = new NoFila();
+        aux.setValor(x);
+        aux.setProximo(null);
+
+        if( this.filaCVazia() ){
+            this.setIni(aux);
+            this.setFim(null);
+            this.getIni().setProximo(this.getFim());
+            this.getFim().setProximo(this.getIni());
+        }else{
+            aux.setProximo(this.getIni());
+            this.getFim().setProximo(aux);
+            this.setFim(aux);
+        }
+    }
+    
+    public NoFila desenfileirar(){
+        if( !this.filaCVazia() ){
+            NoFila aux = new NoFila();
+            NoFila retorno = this.getFim();
+            aux = this.getIni();
+            while( aux.getProximo() != this.fim ){
+                aux = aux.getProximo();
+            }
+            this.setFim(aux);
+            aux.setProximo(null);
+            return retorno;
+        }
+        return null;
+    }
+    
+    public void FilaC(){
+        this.inicializaFilaC();
+    }
 }

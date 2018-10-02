@@ -11,28 +11,7 @@ package Estruturas;
  * @author kaio_
  */
 
-public class Pilha {
-    public class NoPilha{
-        int valor;
-        NoPilha proximo;
-
-        public int getValor() {
-            return valor;
-        }
-
-        public void setValor(int valor) {
-            this.valor = valor;
-        }
-
-        public NoPilha getProximo() {
-            return proximo;
-        }
-
-        public void setProximo(NoPilha proximo) {
-            this.proximo = proximo;
-        }
-    }
-
+public class Pilha extends NoPilha{
     NoPilha topo;
     int tamanho;
 
