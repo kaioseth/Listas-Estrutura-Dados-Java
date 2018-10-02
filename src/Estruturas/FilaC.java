@@ -46,7 +46,7 @@ public class FilaC extends NoFila{
     public void imprimirFilaC(){
         NoFila aux = this.getFim().getProximo();
         int contador = 0;
-        while( aux.getProximo() != this.getFim() ){
+        while( aux.getProximo() != this.getFim().getProximo() ){
             System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
             contador++;
             aux = aux.getProximo();
@@ -64,7 +64,7 @@ public class FilaC extends NoFila{
 
         if( this.filaCVazia() ){
             this.setIni(aux);
-            this.setFim(null);
+            this.setFim(aux);
             this.getIni().setProximo(this.getFim());
             this.getFim().setProximo(this.getIni());
         }else{
@@ -76,14 +76,16 @@ public class FilaC extends NoFila{
     
     public NoFila desenfileirar(){
         if( !this.filaCVazia() ){
-            NoFila aux = new NoFila();
-            NoFila retorno = this.getFim();
-            aux = this.getIni();
-            while( aux.getProximo() != this.fim ){
-                aux = aux.getProximo();
+            NoFila retorno = new NoFila();
+            if( this.getIni() == this.getFim() && this.getIni().getProximo() == this.getFim() ){
+                retorno = this.getIni();
+                this.inicializaFilaC();
+            }else{
+                retorno = this.getIni();
+                this.setFim(this.getIni());
+                this.setIni(this.getIni().getProximo());
+                this.getFim().setProximo(this.getIni());
             }
-            this.setFim(aux);
-            aux.setProximo(null);
             return retorno;
         }
         return null;
