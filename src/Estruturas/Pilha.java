@@ -12,9 +12,9 @@ package Estruturas;
  */
 
 public class Pilha {
-    public class Elemento{
+    public class NoPilha{
         int valor;
-        Elemento proximo;
+        NoPilha proximo;
 
         public int getValor() {
             return valor;
@@ -24,23 +24,23 @@ public class Pilha {
             this.valor = valor;
         }
 
-        public Elemento getProximo() {
+        public NoPilha getProximo() {
             return proximo;
         }
 
-        public void setProximo(Elemento proximo) {
+        public void setProximo(NoPilha proximo) {
             this.proximo = proximo;
         }
     }
 
-    Elemento topo;
+    NoPilha topo;
     int tamanho;
 
-    public Elemento getTopo() {
+    public NoPilha getTopo() {
         return topo;
     }
 
-    public void setTopo(Elemento topo) {
+    public void setTopo(NoPilha topo) {
         this.topo = topo;
     }
 
@@ -62,19 +62,19 @@ public class Pilha {
     }
 
     public void empilhar(int x) {
-        Elemento aux = this.getTopo();
-        this.setTopo(new Elemento());
+        NoPilha aux = this.getTopo();
+        this.setTopo(new NoPilha());
         this.getTopo().setValor(x);
         this.getTopo().setProximo(aux);
         this.setTamanho(this.getTamanho()+1);
     }
 
-    public Elemento desempilhar(){
+    public NoPilha desempilhar(){
         if( this.pilhaVazia() ){
             System.out.println("Não existem elementos na pilha para serem removidos!");
             return null;
         }else{
-            Elemento aux = this.getTopo();
+            NoPilha aux = this.getTopo();
             this.setTopo(this.getTopo().getProximo());
             this.setTamanho(this.getTamanho()-1);
             return aux;
@@ -93,7 +93,7 @@ public class Pilha {
     }
 
     public void imprimirPilha(){
-        Elemento aux = this.getTopo();
+        NoPilha aux = this.getTopo();
         int contador = 0;
         while( aux.getProximo() != null ){
             System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());

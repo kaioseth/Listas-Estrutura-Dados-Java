@@ -11,6 +11,8 @@ package Estruturas;
  * @author kaio_
  */
 
-public class Fila {
-    
+public class FilaS {
+    public class NoFila{
+        
+    }
 }

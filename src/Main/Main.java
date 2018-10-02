@@ -13,7 +13,8 @@ import Estruturas.LSE;
 import Estruturas.LDE;
 import Estruturas.LSEC;
 import Estruturas.LDEC;
-import Estruturas.Fila;
+import Estruturas.FilaS;
+import Estruturas.FilaC;
 import Estruturas.Pilha;
 import Estruturas.NoLista;
 
@@ -37,8 +38,11 @@ public class Main {
     private static LDEC    ldec;
     private static boolean ldeci = false;
 
-    private static Fila    fila;
-    private static boolean filai = false;
+    private static FilaS    filas;
+    private static boolean filasi = false;
+    
+    private static FilaC    filac;
+    private static boolean filaci = false;
 
     private static Pilha   pilha;
     private static boolean pilhai = false;
@@ -60,7 +64,7 @@ public class Main {
 
             opcaoPrincipal = entrada.nextInt();
 
-            if( opcaoPrincipal < 0 || opcaoPrincipal > 6  ){
+            if( opcaoPrincipal < 0 || opcaoPrincipal > 7  ){
                 System.out.println("Opção inválida, digite outro valor!");
             }else{
 
@@ -217,13 +221,19 @@ public class Main {
                         } // fim while opção secundária
                     break;
 
-                    case 5: // Fila  
-                        if( !filai ){ filai = true; fila = new Fila(); }
+                    case 5: // Fila Simples com Ponteiro 
+                        if( !filasi ){ filasi = true; filas = new FilaS(); }
+
+                        
+                    break;
+                    
+                    case 6: // Fila Circular com Ponteiro 
+                        if( !filaci ){ filaci = true; filac = new FilaC(); }
 
                         
                     break;
 
-                    case 6: // Pilha
+                    case 7: // Pilha
                         if( !pilhai ){ pilhai = true; pilha = new Pilha(); }
                         opcaoSecundaria = 1;
                         while( opcaoSecundaria != 0 ){
@@ -264,8 +274,9 @@ public class Main {
         System.out.println(" 2 - Lista DE ");
         System.out.println(" 3 - Lista SEC ");
         System.out.println(" 4 - Lista DEC ");
-        System.out.println(" 5 - Fila  com Ponteiros ");
-        System.out.println(" 6 - Pilha com Ponteiros ");
+        System.out.println(" 5 - Fila Simples com Ponteiros ");
+        System.out.println(" 6 - Fila Cirular com Ponteiros ");
+        System.out.println(" 7 - Pilha com Ponteiros ");
         System.out.println(" 0 - Encerrar execução ");
         System.out.println("# ------------------------------------- #");
         System.out.println("\n");
