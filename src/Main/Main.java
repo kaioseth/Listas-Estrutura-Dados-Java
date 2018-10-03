@@ -42,16 +42,12 @@ public class Main {
 
     private static FilaS    filas;
     private static boolean filasi = false;
-    
+
     private static FilaC    filac;
     private static boolean filaci = false;
 
     private static Pilha   pilha;
     private static boolean pilhai = false;
-
-    //private static NoFila nofila;
-    //private static NoPilha nopilha;
-    //private static NoLista nolista;
 
     private static int opcaoPrincipal = 1;
     private static int opcaoSecundaria;

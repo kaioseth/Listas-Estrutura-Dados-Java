@@ -139,10 +139,14 @@ public class LDE extends NoLista{
             NoLista aux = this.getPrimeiro();
             int contador = 1;
 
-            while( aux.getProximo() != null ){
+            if( aux.getProximo() == null ){ // só tem um elemento
                 System.out.println("Posição "+contador+": "+aux.getChave());
-                aux = aux.getProximo();
-                contador++;
+            }else{ // possui mais de um elemento na lista
+                while( aux.getProximo() != null ){
+                    System.out.println("Posição "+contador+": "+aux.getChave());
+                    aux = aux.getProximo();
+                    contador++;
+                }
             }
         }else{
             System.out.println("Estrutura vazia, impossível imprimir dados!");
