@@ -31,7 +31,7 @@ public class Pilha extends NoPilha{
         this.tamanho = tamanho;
     }
 
-    public void Pilha(){
+    public Pilha(){
         this.inicializaPilha();
     }
 
@@ -81,7 +81,7 @@ public class Pilha extends NoPilha{
         }
     }
 
-    public int buscarTopo(){
+    /*public int buscarTopo(){
         return this.getTopo().getValor();
-    }
+    }*/
 }

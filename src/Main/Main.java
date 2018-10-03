@@ -16,7 +16,9 @@ import Estruturas.LDEC;
 import Estruturas.FilaS;
 import Estruturas.FilaC;
 import Estruturas.Pilha;
+import Estruturas.NoFila;
 import Estruturas.NoLista;
+import Estruturas.NoPilha;
 
 /**
  *
@@ -47,10 +49,12 @@ public class Main {
     private static Pilha   pilha;
     private static boolean pilhai = false;
 
-    private static NoLista no;
+    //private static NoFila nofila;
+    //private static NoPilha nopilha;
+    //private static NoLista nolista;
 
     private static int opcaoPrincipal = 1;
-    private static int opcaoSecundaria = 2;
+    private static int opcaoSecundaria;
     private static int valor;
 
     /**
@@ -79,11 +83,11 @@ public class Main {
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LSE
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
-                                NoLista no = lse.buscarValor(valor);
-                                if( no != null ){
-                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                NoLista nolista = lse.buscarValor(valor);
+                                if( nolista != null ){
+                                    System.out.println("O valor informado foi encontrado na estrutura!");
                                 }else{
-                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                    System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
                             }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LSE
                                 System.out.println("Digite o valor que deseja inserir no início:");
@@ -100,12 +104,12 @@ public class Main {
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LSE
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
-                                lse.remover(valor);
+                                //lse.remover(valor);
                             }else if( opcaoSecundaria == 7 ){ // Imprimir LSE
                                 lse.imprimirEstrutura();
                             }
                         } // fim while opção secundária
-                    break;
+                    break; // parada condição 1
 
                     case 2: // LDE
                         if( !ldei ) { ldei = true; lde = new LDE(); }
@@ -117,11 +121,11 @@ public class Main {
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LDE
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
-                                NoLista no = lde.buscarValor(valor);
-                                if( no != null ){
-                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                NoLista nolista = lde.buscarValor(valor);
+                                if( nolista != null ){
+                                    System.out.println("O valor informado foi encontradona estrutura!");
                                 }else{
-                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                    System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
                             }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LDE
                                 System.out.println("Digite o valor que deseja inserir no início:");
@@ -155,11 +159,11 @@ public class Main {
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LSEC
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
-                                NoLista no = lsec.buscarValor(valor);
-                                if( no != null ){
-                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                NoLista nolista = lsec.buscarValor(valor);
+                                if( nolista != null ){
+                                    System.out.println("O valor informado foi encontrado na estrutura!");
                                 }else{
-                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                    System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
                             }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LSEC
                                 System.out.println("Digite o valor que deseja inserir no início:");
@@ -181,23 +185,22 @@ public class Main {
                                 lsec.imprimirEstrutura();
                             }
                         } // fim while opção secundária
-                    break;
+                    break; // parada condição 3
 
                     case 4: // LDEC
                         if( !ldeci ){ ldeci = true; ldec = new LDEC(); }
                         opcaoSecundaria = 1;
-
                         while( opcaoSecundaria != 0 ){
                             imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
                             if( opcaoSecundaria == 2 ){ // Buscar valor em LDEC
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
-                                NoLista no = ldec.buscarValor(valor);
-                                if( no != null ){
-                                    System.out.println("O valor buscado foi encontrado antes do elemento: "+no.getProximo());
+                                NoLista nolista = ldec.buscarValor(valor);
+                                if( nolista != null ){
+                                    System.out.println("O valor informado foi encontrado na estrutura!");
                                 }else{
-                                    System.out.println("O valor buscado não foi encontrado na estrutura!");
+                                    System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
                             }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LDEC
                                 System.out.println("Digite o valor que deseja inserir no início:");
@@ -219,19 +222,53 @@ public class Main {
                                 ldec.imprimirEstrutura();
                             }
                         } // fim while opção secundária
-                    break;
+                    break; // parada condição 4
 
                     case 5: // Fila Simples com Ponteiro 
                         if( !filasi ){ filasi = true; filas = new FilaS(); }
-
-                        
-                    break;
+                        opcaoSecundaria = 1;
+                        while( opcaoSecundaria != 0 ){
+                            imprimirSubMenuFila();  
+                            opcaoSecundaria = entrada.nextInt();
+                            if( opcaoSecundaria == 2 ){ // Enfileirar
+                                System.out.println("Digite o valor que deseja inserir na estrutura:");
+                                valor = entrada.nextInt();
+                                filas.enfileirar(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Desemfileirar
+                                NoFila nofila = filas.desenfileirar();
+                                if( nofila == null ){
+                                    System.out.println("A estrutura estava vazia, sendo impossível executar essa ação!");
+                                }else{
+                                    System.out.println("Valor desemfileirado: "+nofila.getValor());
+                                }
+                            }else if( opcaoSecundaria == 4 ){ // Imprimir estrutura
+                                filas.imprimirFilaS();
+                            }
+                        } // fim while submenu fila simples
+                    break; // parada condição 5
                     
                     case 6: // Fila Circular com Ponteiro 
                         if( !filaci ){ filaci = true; filac = new FilaC(); }
-
-                        
-                    break;
+                        opcaoSecundaria = 1;
+                        while( opcaoSecundaria != 0 ){
+                            imprimirSubMenuFila();  
+                            opcaoSecundaria = entrada.nextInt();
+                            if( opcaoSecundaria == 2 ){ // Enfileirar
+                                System.out.println("Digite o valor que deseja inserir na estrutura:");
+                                valor = entrada.nextInt();
+                                filac.enfileirar(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Desemfileirar
+                                NoFila nofila = filac.desenfileirar();
+                                if( nofila == null ){
+                                    System.out.println("A estrutura estava vazia, sendo impossível executar essa ação!");
+                                }else{
+                                    System.out.println("Valor desemfileirado: "+nofila.getValor());
+                                }
+                            }else if( opcaoSecundaria == 4 ){ // Imprimir estrutura
+                                filac.imprimirFilaC();
+                            }
+                        } // fim while submenu fila circular
+                    break; // parada condição 6
 
                     case 7: // Pilha
                         if( !pilhai ){ pilhai = true; pilha = new Pilha(); }
@@ -244,16 +281,26 @@ public class Main {
                                 valor = entrada.nextInt();
                                 pilha.empilhar(valor);
                             }else if( opcaoSecundaria == 3 ){ // Desempilhar
-                                pilha.desempilhar();
+                                NoPilha nopilha = pilha.desempilhar();
+                                if( nopilha == null ){
+                                    System.out.println("A estrutura estava vazia, sendo impossível executar essa ação!");
+                                }else{
+                                    System.out.println("Valor desempilhado: "+nopilha.getValor());
+                                }
                             }else if( opcaoSecundaria == 4 ){ // Tamanho da pilha
-                                pilha.tamanhoPilha();
+                                System.out.println("A pilha possui tamanho: "+pilha.tamanhoPilha());
                             }else if( opcaoSecundaria == 5 ){ // Imprimir elementos da pilha
                                 pilha.imprimirPilha();
                             }else if( opcaoSecundaria == 6 ){ // Ver elemento do topo
-                                pilha.buscarTopo();
+                                NoPilha nopilha = pilha.getTopo();
+                                if( nopilha == null ){
+                                    System.out.println("A estrutura estava vazia, sendo impossível executar essa ação!");
+                                }else{
+                                    System.out.println("Valor presente no topo da pilha é: "+nopilha.getValor());
+                                }
                             }
                         } // fim while submenu pilha
-                    break; // parada condição 6
+                    break; // parada condição 7
 
                     default:
                         System.out.println("Opção inválida!");
@@ -282,6 +329,19 @@ public class Main {
         System.out.println("\n");
     }
 
+    public static void imprimirSubMenuFila(){
+        System.out.println("\n");
+        System.out.println("# Menu Secundário---------------------- #");
+        System.out.println(" O que deseja fazer com a estrutura: ");
+        //System.out.println(" 1 - Inicializar estrutura ");
+        System.out.println(" 2 - Enfileirar elemento ");
+        System.out.println(" 3 - Desemfileirar elemento ");
+        System.out.println(" 4 - Imprimir elementos ");
+        System.out.println(" 0 - Voltar para menu principal ");
+        System.out.println("# ------------------------------------- #");
+        System.out.println("\n");
+    }
+    
     public static void imprimirSubMenuLista(){
         System.out.println("\n");
         System.out.println("# Menu Secundário---------------------- #");
@@ -293,21 +353,6 @@ public class Main {
         System.out.println(" 5 - Inserir ordenadamente ");
         System.out.println(" 6 - Remover ");
         System.out.println(" 7 - Imprimir estrutura ");
-        System.out.println(" 0 - Voltar para menu principal ");
-        System.out.println("# ------------------------------------- #");
-        System.out.println("\n");
-    }
-
-    public static void imprimirSubMenuFila(){
-        System.out.println("\n");
-        System.out.println("# Menu Secundário---------------------- #");
-        System.out.println(" O que deseja fazer com a estrutura: ");
-        //System.out.println(" 1 - Inicializar estrutura ");
-        System.out.println(" 2 - Empilhar elemento ");
-        System.out.println(" 3 - Desempilhar elemento ");
-        System.out.println(" 4 - Tamanho atual da pilha ");
-        System.out.println(" 5 - Imprimir elementos ");
-        System.out.println(" 6 - Ver elemento do topo ");
         System.out.println(" 0 - Voltar para menu principal ");
         System.out.println("# ------------------------------------- #");
         System.out.println("\n");

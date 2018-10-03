@@ -38,7 +38,10 @@ public class LSE extends NoLista{
                 no = no.getProximo();
             }
         }
-        return no;
+        if( no.getChave() == x ){
+            return no;
+        }
+        return null;
     }
 
     public void inicializaLista(){
@@ -98,8 +101,7 @@ public class LSE extends NoLista{
         }
     }
 
-    // aqui
-    public void remover(int x){
+    /*public void remover(int x){
         if( !this.listaVazia() ){
             if( this.getPrimeiro().getChave() == x ){ // verifico se o elemento é o primeiro da lista
                 this.setPrimeiro(this.getPrimeiro().getProximo());
@@ -125,7 +127,7 @@ public class LSE extends NoLista{
                 }
             }
         }
-    }
+    }*/
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){

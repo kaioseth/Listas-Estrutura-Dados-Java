@@ -93,7 +93,7 @@ public class FilaS extends NoFila{
         return null;
     }
     
-    public void FilaS(){
+    public FilaS(){
         this.inicializaFilaS();
     }
 }

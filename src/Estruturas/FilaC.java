@@ -91,7 +91,7 @@ public class FilaC extends NoFila{
         return null;
     }
     
-    public void FilaC(){
+    public FilaC(){
         this.inicializaFilaC();
     }
 }
