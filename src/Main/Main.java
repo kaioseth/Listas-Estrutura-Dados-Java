@@ -72,6 +72,8 @@ public class Main {
                 System.out.println("Opção inválida, digite outro valor!");
             }else{
 
+                //System.out.println("Opção principal: "+opcaoPrincipal);
+
                 switch( opcaoPrincipal ) {
                     case 1: // LSE
                         if( !lsei ) { lsei = true; lse = new LSE(); }
