@@ -72,12 +72,16 @@ public class Pilha extends NoPilha{
     }
 
     public void imprimirPilha(){
-        NoPilha aux = this.getTopo();
-        int contador = 0;
-        while( aux.getProximo() != null ){
-            System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
-            contador++;
-            aux = aux.getProximo();
+        if( !this.pilhaVazia() ){
+            NoPilha aux = this.getTopo();
+            int contador = 0;
+            while( aux.getProximo() != null ){
+                System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
+                contador++;
+                aux = aux.getProximo();
+            }
+        }else{
+            System.out.println("Estrutura vazia, impossível imprimir dados!");
         }
     }
 

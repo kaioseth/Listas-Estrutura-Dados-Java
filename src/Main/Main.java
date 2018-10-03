@@ -279,7 +279,7 @@ public class Main {
                             imprimirSubMenuPilha();  
                             opcaoSecundaria = entrada.nextInt();
                             if( opcaoSecundaria == 2 ){ // Empilhar
-                                System.out.println("Digite o valor que deseja buscar:");
+                                System.out.println("Digite o valor que deseja empilhar:");
                                 valor = entrada.nextInt();
                                 pilha.empilhar(valor);
                             }else if( opcaoSecundaria == 3 ){ // Desempilhar

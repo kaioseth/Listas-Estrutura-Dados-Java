@@ -44,16 +44,20 @@ public class FilaC extends NoFila{
     }
     
     public void imprimirFilaC(){
-        NoFila aux = this.getFim().getProximo();
-        int contador = 0;
-        while( aux.getProximo() != this.getFim().getProximo() ){
-            System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
-            contador++;
-            aux = aux.getProximo();
-        }
-        if( this.getFim() != null ){
-            System.out.println("Elemento da posição "+contador+" possui o valor: "+this.getFim().getValor());
-            contador++;
+        if( this.filaCVazia() ){
+            System.out.println("Estrutura vazia, impossível imprimir dados!");
+        }else{
+            NoFila aux = this.getFim().getProximo();
+            int contador = 0;
+            while( aux.getProximo() != this.getFim().getProximo() ){
+                System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
+                contador++;
+                aux = aux.getProximo();
+            }
+            if( this.getFim() != null ){
+                System.out.println("Elemento da posição "+contador+" possui o valor: "+this.getFim().getValor());
+                contador++;
+            }
         }
     }
     
