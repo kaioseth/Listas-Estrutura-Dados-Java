@@ -37,7 +37,7 @@ public class Pilha extends NoPilha{
 
     public void inicializaPilha(){
         this.setTopo(null);
-        this.setTamanho(tamanho);
+        this.setTamanho(0);
     }
 
     public void empilhar(int x) {
@@ -75,7 +75,7 @@ public class Pilha extends NoPilha{
         if( !this.pilhaVazia() ){
             NoPilha aux = this.getTopo();
             int contador = 0;
-            while( aux.getProximo() != null ){
+            while( aux != null ){
                 System.out.println("Elemento da posição "+contador+" possui o valor: "+aux.getValor());
                 contador++;
                 aux = aux.getProximo();
@@ -84,8 +84,4 @@ public class Pilha extends NoPilha{
             System.out.println("Estrutura vazia, impossível imprimir dados!");
         }
     }
-
-    /*public int buscarTopo(){
-        return this.getTopo().getValor();
-    }*/
 }
