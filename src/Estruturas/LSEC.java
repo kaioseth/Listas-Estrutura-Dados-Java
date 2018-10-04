@@ -92,7 +92,8 @@ public class LSEC extends NoLista{
             NoLista aux = this.getUltimo().getProximo();
 
             no.setChave(x);
-            aux.setProximo(this.getUltimo());
+            //aux.setProximo(this.getUltimo());
+            //aux.setProximo(this.getUltimo());
 
             while( aux.getProximo().getChave() < x ){
                 aux = aux.getProximo();
@@ -103,9 +104,11 @@ public class LSEC extends NoLista{
         }
     }
 
-    public void remover(int x){
+    public NoLista remover(int x){
+        NoLista no;
+        no = null;
+
         if( !this.listaVazia() ){
-            NoLista no = new NoLista();
             NoLista aux = this.getUltimo();
 
             while( aux.getProximo() != this.getUltimo() && aux.getProximo().getChave() != x ){
@@ -125,18 +128,23 @@ public class LSEC extends NoLista{
                 }
             }
         }
+        
+        return no;
     }
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
-            NoLista aux = this.getUltimo();
+            NoLista aux = this.getUltimo().getProximo();
             int contador = 0;
-
-            while( aux.getProximo() != this.getUltimo() ){
+            
+            while( aux != this.getUltimo() ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
                 aux = aux.getProximo();
                 contador++;
             }
+            
+            System.out.println("Posição "+contador+": "+aux.getChave());
+            
         }else{
             System.out.println("Estrutura vazia, impossível imprimir dados!");
         }

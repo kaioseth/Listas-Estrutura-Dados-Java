@@ -122,7 +122,7 @@ public class LDEC {
         }
     }
 
-    /*public void remover(int x){
+    public NoLista remover(int x){
         NoLista no = this.buscarValor(x);
 
         if( no == null ){
@@ -147,18 +147,21 @@ public class LDEC {
                 }
             }            
         }
-    }*/
+        return no;
+    }
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
-            NoLista aux = this.getPrimeiro();
+            NoLista aux = this.getUltimo().getProximo();
             int contador = 0;
-
-            while( aux.getProximo() != this.getPrimeiro() ){
+            
+            while( aux != this.getUltimo() ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
                 aux = aux.getProximo();
                 contador++;
             }
+            
+            System.out.println("Posição "+contador+": "+aux.getChave());
         }else{
             System.out.println("Estrutura vazia, impossível imprimir dados!");
         }

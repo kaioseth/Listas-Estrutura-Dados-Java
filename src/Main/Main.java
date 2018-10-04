@@ -108,7 +108,7 @@ public class Main {
                         } // fim while opção secundária
                     break; // parada condição 1
 
-                    case 2: // LDE
+                    case 2: // LDE - testado
                         if( !ldei ) { ldei = true; lde = new LDE(); }
                         opcaoSecundaria = 1;
 
@@ -151,7 +151,7 @@ public class Main {
                         } // fim while opção secundária
                     break;
 
-                    case 3: // LSEC
+                    case 3: // LSEC - testado
                         if( !lseci ){ lseci = true; lsec = new LSEC(); }
                         opcaoSecundaria = 1;
 
@@ -182,14 +182,19 @@ public class Main {
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LSEC
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
-                                lsec.remover(valor);
+                                NoLista nolista = lsec.remover(valor);
+                                if( nolista != null ){
+                                    System.out.println("Valor removido com sucesso!");
+                                }else{
+                                    System.out.println("Valor não foi encontrado na estrutura!");
+                                }
                             }else if( opcaoSecundaria == 7 ){ // Imprimir LSEC
                                 lsec.imprimirEstrutura();
                             }
                         } // fim while opção secundária
                     break; // parada condição 3
 
-                    case 4: // LDEC
+                    case 4: // LDEC - testado
                         if( !ldeci ){ ldeci = true; ldec = new LDEC(); }
                         opcaoSecundaria = 1;
                         while( opcaoSecundaria != 0 ){
@@ -219,7 +224,12 @@ public class Main {
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LDEC
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
-                                //ldec.remover(valor);
+                                NoLista nolista = ldec.remover(valor);
+                                if( nolista != null ){
+                                    System.out.println("Valor removido com sucesso!");
+                                }else{
+                                    System.out.println("Valor não foi encontrado na estrutura!");
+                                }
                             }else if( opcaoSecundaria == 7 ){ // Imprimir LDEC
                                 ldec.imprimirEstrutura();
                             }
