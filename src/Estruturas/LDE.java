@@ -38,7 +38,10 @@ public class LDE extends NoLista{
                 no = no.getProximo();
             }
         }
-        return no;
+        if( no.getChave() == x ){
+            return no;
+        }
+        return null;
     }
 
     public void inicializaLista(){
@@ -107,8 +110,33 @@ public class LDE extends NoLista{
         }
     }
 
-    public void remover(int x){
+    public NoLista remover(int x){
         NoLista no = this.buscarValor(x);
+        
+        if( no != null ){
+            if( this.getPrimeiro() == this.getUltimo() ){
+                this.inicializaLista();
+            }else{
+                if( no == this.getPrimeiro() ){
+                    this.setPrimeiro(no.getProximo());
+                    this.getPrimeiro().setAnterior(null);
+                    no.setProximo(null);
+                }else{
+                    if( no == this.getUltimo() ){
+                        this.setUltimo(no.getAnterior());
+                        this.getUltimo().setProximo(null);
+                        no.setAnterior(null);
+                    }else{
+                        no.getAnterior().setProximo(no.getProximo());
+                        no.getProximo().setAnterior(no.getAnterior());
+                        no.setAnterior(null);
+                        no.setProximo(null);
+                    }
+                }
+            }
+        }
+        
+        /*NoLista no = this.buscarValor(x);
 
         if( no == null ){
             System.out.println("Elemento não encontrado na estrutura!");
@@ -131,22 +159,19 @@ public class LDE extends NoLista{
                     no.setProximo(null);
                 }
             }            
-        }
+        }*/
+        return no;
     }
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
             NoLista aux = this.getPrimeiro();
-            int contador = 1;
+            int contador = 0;
 
-            if( aux.getProximo() == null ){ // só tem um elemento
+            while( aux != null ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
-            }else{ // possui mais de um elemento na lista
-                while( aux.getProximo() != null ){
-                    System.out.println("Posição "+contador+": "+aux.getChave());
-                    aux = aux.getProximo();
-                    contador++;
-                }
+                aux = aux.getProximo();
+                contador++;
             }
         }else{
             System.out.println("Estrutura vazia, impossível imprimir dados!");

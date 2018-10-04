@@ -152,7 +152,7 @@ public class LDEC {
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
             NoLista aux = this.getPrimeiro();
-            int contador = 1;
+            int contador = 0;
 
             while( aux.getProximo() != this.getPrimeiro() ){
                 System.out.println("Posição "+contador+": "+aux.getChave());

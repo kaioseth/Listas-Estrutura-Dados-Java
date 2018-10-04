@@ -130,7 +130,7 @@ public class LSEC extends NoLista{
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
             NoLista aux = this.getUltimo();
-            int contador = 1;
+            int contador = 0;
 
             while( aux.getProximo() != this.getUltimo() ){
                 System.out.println("Posição "+contador+": "+aux.getChave());

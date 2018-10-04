@@ -59,7 +59,7 @@ public class LSE extends NoLista{
     public void inserirInicio(int x){
         NoLista no = new NoLista();
         no.setChave(x);
-        no.setProximo(this.primeiro);
+        no.setProximo(this.getPrimeiro());
 
         if( this.listaVazia() ){
             this.setUltimo(no);
@@ -73,10 +73,9 @@ public class LSE extends NoLista{
             this.inserirInicio(x);
         }else{
             NoLista no = new NoLista();
-
             no.setChave(x);
             no.setProximo(null);
-
+            this.getUltimo().setProximo(no);
             this.setUltimo(no);
         }
     }
@@ -101,47 +100,48 @@ public class LSE extends NoLista{
         }
     }
 
-    /*public void remover(int x){
+    public NoLista remover(int x){
+        NoLista no;
+        no = null;
+        
         if( !this.listaVazia() ){
-            if( this.getPrimeiro().getChave() == x ){ // verifico se o elemento é o primeiro da lista
-                this.setPrimeiro(this.getPrimeiro().getProximo());
-            }else{
-                NoLista noAtual;
-                NoLista noAnterior;
-
-                noAtual = noAnterior = this.getPrimeiro();
-
-                while( noAtual.getProximo() != null && noAtual.getChave() != x){
-                    noAnterior = noAtual;
-                    noAtual = noAtual.getProximo();
+            if( x == this.getPrimeiro().getChave() ){
+                no = this.getPrimeiro();
+                if( this.getPrimeiro() == this.getUltimo() ){
+                    this.inicializaLista();
+                }else{
+                    this.setPrimeiro(no.getProximo());
+                    no.setProximo(null);
                 }
-
-                if( noAtual != null ){ // encontrou o elemento no meio da lista
-                    if( noAtual != null ){
-                        noAnterior.setProximo(noAtual.getProximo());
-                    }
-                    if( noAtual == this.getUltimo() ){ // verifico se elemento é o ultimo
-                        this.setUltimo(noAnterior);
-                        this.getUltimo().setProximo(null);
+            }else{
+                NoLista aux;
+                aux = this.getPrimeiro();
+                while( aux.getProximo() != null && aux.getProximo().getChave() != x ){
+                    aux = aux.getProximo();
+                }
+                if( aux.getProximo() != null ){
+                    no = aux.getProximo();
+                    aux.setProximo(no.getProximo());
+                    no.setProximo(null);
+                    if( no == this.getUltimo() ){
+                        this.setUltimo(aux);
                     }
                 }
             }
         }
-    }*/
+
+        return no;
+    }
 
     public void imprimirEstrutura(){
         if( !this.listaVazia() ){
             NoLista aux = this.getPrimeiro();
-            int contador = 1;
+            int contador = 0;
 
-            if( aux.getProximo() == null ){ // só tem um elemento
+            while( aux != null ){
                 System.out.println("Posição "+contador+": "+aux.getChave());
-            }else{ // possui mais de um elemento na lista
-                while( aux.getProximo() != null ){
-                    System.out.println("Posição "+contador+": "+aux.getChave());
-                    aux = aux.getProximo();
-                    contador++;
-                }
+                aux = aux.getProximo();
+                contador++;
             }
         }else{
             System.out.println("Estrutura vazia, impossível imprimir dados!");

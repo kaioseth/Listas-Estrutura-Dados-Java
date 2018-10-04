@@ -64,21 +64,27 @@ public class Main {
 
             opcaoPrincipal = entrada.nextInt();
 
-            if( opcaoPrincipal < 0 || opcaoPrincipal > 7  ){
-                System.out.println("Opção inválida, digite outro valor!");
-            }else{
-
-                //System.out.println("Opção principal: "+opcaoPrincipal);
-
                 switch( opcaoPrincipal ) {
-                    case 1: // LSE
+                    case 1: // LSE - testado
                         if( !lsei ) { lsei = true; lse = new LSE(); }
                         opcaoSecundaria = 1;
 
                         while( opcaoSecundaria != 0 ){
                             imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
-                            if( opcaoSecundaria == 2 ){ // Buscar valor em LSE
+                            if( opcaoSecundaria == 2 ){ // Inserir valor no início de LSE
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                lse.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no final de LSE
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                lse.inserirFim(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor em alguma posição de LSE
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                lse.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Buscar valor em LSE
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
                                 NoLista nolista = lse.buscarValor(valor);
@@ -87,22 +93,15 @@ public class Main {
                                 }else{
                                     System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
-                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LSE
-                                System.out.println("Digite o valor que deseja inserir no início:");
-                                valor = entrada.nextInt();
-                                lse.inserirInicio(valor);
-                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LSE
-                                System.out.println("Digite o valor que deseja inserir no final:");
-                                valor = entrada.nextInt();
-                                lse.inserirFim(valor);
-                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LSE
-                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
-                                valor = entrada.nextInt();
-                                lse.inserirOrdenado(valor);
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LSE
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
-                                //lse.remover(valor);
+                                NoLista nolista = lse.remover(valor);
+                                if( nolista != null ){
+                                    System.out.println("Valor removido com sucesso!");
+                                }else{
+                                    System.out.println("Valor não foi encontrado na estrutura!");
+                                }
                             }else if( opcaoSecundaria == 7 ){ // Imprimir LSE
                                 lse.imprimirEstrutura();
                             }
@@ -116,7 +115,19 @@ public class Main {
                         while( opcaoSecundaria != 0 ){
                             imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
-                            if( opcaoSecundaria == 2 ){ // Buscar valor em LDE
+                            if( opcaoSecundaria == 2 ){ // Inserir valor no início de LDE
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                lde.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no final de LDE
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                lde.inserirFim(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor em alguma posição de LDE
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                lde.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Buscar valor em LDE
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
                                 NoLista nolista = lde.buscarValor(valor);
@@ -125,22 +136,15 @@ public class Main {
                                 }else{
                                     System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
-                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LDE
-                                System.out.println("Digite o valor que deseja inserir no início:");
-                                valor = entrada.nextInt();
-                                lde.inserirInicio(valor);
-                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LDE
-                                System.out.println("Digite o valor que deseja inserir no final:");
-                                valor = entrada.nextInt();
-                                lde.inserirFim(valor);
-                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LDE
-                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
-                                valor = entrada.nextInt();
-                                lde.inserirOrdenado(valor);
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LDE
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
-                                lde.remover(valor);
+                                NoLista nolista = lde.remover(valor);
+                                if( nolista != null ){
+                                    System.out.println("Valor removido com sucesso!");
+                                }else{
+                                    System.out.println("Valor não foi encontrado na estrutura!");
+                                }
                             }else if( opcaoSecundaria == 7 ){ // Imprimir LDE
                                 lde.imprimirEstrutura();
                             }
@@ -154,7 +158,19 @@ public class Main {
                         while( opcaoSecundaria != 0 ){
                             imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
-                            if( opcaoSecundaria == 2 ){ // Buscar valor em LSEC
+                            if( opcaoSecundaria == 2 ){ // Inserir valor no início de LSEC
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                lsec.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no final de LSEC
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                lsec.inserirFim(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor em alguma posição de LSEC
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                lsec.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Buscar valor em LSEC
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
                                 NoLista nolista = lsec.buscarValor(valor);
@@ -163,18 +179,6 @@ public class Main {
                                 }else{
                                     System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
-                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LSEC
-                                System.out.println("Digite o valor que deseja inserir no início:");
-                                valor = entrada.nextInt();
-                                lsec.inserirInicio(valor);
-                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LSEC
-                                System.out.println("Digite o valor que deseja inserir no final:");
-                                valor = entrada.nextInt();
-                                lsec.inserirFim(valor);
-                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LSEC
-                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
-                                valor = entrada.nextInt();
-                                lsec.inserirOrdenado(valor);
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LSEC
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
@@ -191,7 +195,19 @@ public class Main {
                         while( opcaoSecundaria != 0 ){
                             imprimirSubMenuLista();  
                             opcaoSecundaria = entrada.nextInt();
-                            if( opcaoSecundaria == 2 ){ // Buscar valor em LDEC
+                            if( opcaoSecundaria == 2 ){ // Inserir valor no início de LDEC
+                                System.out.println("Digite o valor que deseja inserir no início:");
+                                valor = entrada.nextInt();
+                                ldec.inserirInicio(valor);
+                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no final de LDEC
+                                System.out.println("Digite o valor que deseja inserir no final:");
+                                valor = entrada.nextInt();
+                                ldec.inserirFim(valor);
+                            }else if( opcaoSecundaria == 4 ){ // Inserir valor em alguma posição de LDEC
+                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
+                                valor = entrada.nextInt();
+                                ldec.inserirOrdenado(valor);
+                            }else if( opcaoSecundaria == 5 ){ // Buscar valor em LDEC
                                 System.out.println("Digite o valor que deseja buscar:");
                                 valor = entrada.nextInt();
                                 NoLista nolista = ldec.buscarValor(valor);
@@ -200,18 +216,6 @@ public class Main {
                                 }else{
                                     System.out.println("O valor informado não foi encontrado na estrutura!");
                                 }
-                            }else if( opcaoSecundaria == 3 ){ // Inserir valor no início de LDEC
-                                System.out.println("Digite o valor que deseja inserir no início:");
-                                valor = entrada.nextInt();
-                                ldec.inserirInicio(valor);
-                            }else if( opcaoSecundaria == 4 ){ // Inserir valor no final de LDEC
-                                System.out.println("Digite o valor que deseja inserir no final:");
-                                valor = entrada.nextInt();
-                                ldec.inserirFim(valor);
-                            }else if( opcaoSecundaria == 5 ){ // Inserir valor em alguma posição de LDEC
-                                System.out.println("Digite o valor que deseja inserir de maneira ordenada:");
-                                valor = entrada.nextInt();
-                                ldec.inserirOrdenado(valor);
                             }else if( opcaoSecundaria == 6 ){ // Remover valor de LDEC
                                 System.out.println("Digite o valor que deseja remover:");
                                 valor = entrada.nextInt();
@@ -300,15 +304,11 @@ public class Main {
                         } // fim while submenu pilha
                     break; // parada condição 7
 
-                    default:
-                        System.out.println("Opção inválida!");
                 } // fim switch opção principal
-
-            } // fim else valida opção inválida
 
         } // fim while opção principal
 
-        JOptionPane.showMessageDialog(null, "Execução encerrada!");
+        System.out.println("Execução encerrada!");
     }
 
     public static void imprimirMenuPrincipal(){
@@ -345,10 +345,10 @@ public class Main {
         System.out.println("# Menu Secundário---------------------- #");
         System.out.println(" O que deseja fazer com a estrutura: ");
         //System.out.println(" 1 - Inicializar estrutura ");
-        System.out.println(" 2 - Buscar valor ");
-        System.out.println(" 3 - Inserir no início ");
-        System.out.println(" 4 - Inserir no final ");
-        System.out.println(" 5 - Inserir ordenadamente ");
+        System.out.println(" 2 - Inserir no início ");
+        System.out.println(" 3 - Inserir no final ");
+        System.out.println(" 4 - Inserir ordenadamente ");
+        System.out.println(" 5 - Buscar valor ");
         System.out.println(" 6 - Remover ");
         System.out.println(" 7 - Imprimir estrutura ");
         System.out.println(" 0 - Voltar para menu principal ");
